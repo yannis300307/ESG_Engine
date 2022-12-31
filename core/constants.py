@@ -1,0 +1,10 @@
+
+# Log Spamming
+NO_LOG = 0
+NORMAL_LOG = 1
+MAX_LOG = 2
+
+
+# Network Events
+CLIENT_QUIT_EVENT = 0
+CLIENT_CONNECTION_EVENT = 1
