@@ -4,7 +4,7 @@ with open('README.md') as readme_file:
     README = readme_file.read()
 
 setup_args = dict(
-    name='ES Engine',
+    name='ESG Engine',
     version='0.1.4',
     description='A little online game engine.',
     long_description_content_type="text/markdown",

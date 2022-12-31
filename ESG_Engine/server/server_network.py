@@ -1,10 +1,10 @@
-from ES_Engine.core.network import Network
+from ESG_Engine.core.network import Network
 from threading import Thread
 
-from ES_Engine.core.network_event import NetworkEvent
-from ES_Engine.core.received_packet import ReceivedPacket
-from ES_Engine.core.server_client import ServerClient
-from ES_Engine.core.packet import Packet
+from ESG_Engine.core.network_event import NetworkEvent
+from ESG_Engine.core.received_packet import ReceivedPacket
+from ESG_Engine.core.server_client import ServerClient
+from ESG_Engine.core.packet import Packet
 import socket
 
 

@@ -1,7 +1,7 @@
-from ES_Engine.core.network import Network
+from ESG_Engine.core.network import Network
 from threading import Thread
-from ES_Engine.core.packet import Packet
-from ES_Engine.core.received_packet import ReceivedPacket
+from ESG_Engine.core.packet import Packet
+from ESG_Engine.core.received_packet import ReceivedPacket
 
 import socket
 

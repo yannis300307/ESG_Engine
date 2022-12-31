@@ -1,4 +1,4 @@
-from ES_Engine.core.entity import Entity
+from ESG_Engine.core.entity import Entity
 import pygame
 
 

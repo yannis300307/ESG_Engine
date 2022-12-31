@@ -1,7 +1,7 @@
-from ES_Engine.core.entity_manager import EntityManager
-from ES_Engine.core.map import Map
-from ES_Engine.core.clock import Clock
-from ES_Engine.core.network import Network
+from ESG_Engine.core.entity_manager import EntityManager
+from ESG_Engine.core.map import Map
+from ESG_Engine.core.clock import Clock
+from ESG_Engine.core.network import Network
 
 
 class Core:
