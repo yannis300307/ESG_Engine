@@ -1,12 +1,12 @@
 import pygame
 
-from client.particles_emitters_manager import ParticlesEmittersManager
-from client.renderer import Renderer
-from client.sound_manager import SoundManager
-from core.engineCore import Core
-from client.event_handler import EventHandler
-from client.camera import Camera
-from client.client_network import ClientNetwork
+from ES_Engine.client.particles_emitters_manager import ParticlesEmittersManager
+from ES_Engine.client.renderer import Renderer
+from ES_Engine.client.sound_manager import SoundManager
+from ES_Engine.core import Core
+from ES_Engine.client.event_handler import EventHandler
+from ES_Engine.client.camera import Camera
+from ES_Engine.client.client_network import ClientNetwork
 
 
 pygame.init()

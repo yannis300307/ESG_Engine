@@ -1,6 +1,5 @@
-from core.network_event import NetworkEvent
-from core.received_packet import ReceivedPacket
-from core.constants import *
+from ES_Engine.core.network_event import NetworkEvent
+from ES_Engine.core.received_packet import ReceivedPacket
 
 
 class Network:

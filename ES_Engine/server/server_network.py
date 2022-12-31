@@ -1,11 +1,10 @@
-from core.constants import *
-from core.network import Network
+from ES_Engine.core.network import Network
 from threading import Thread
 
-from core.network_event import NetworkEvent
-from core.received_packet import ReceivedPacket
-from core.server_client import ServerClient
-from core.packet import Packet
+from ES_Engine.core.network_event import NetworkEvent
+from ES_Engine.core.received_packet import ReceivedPacket
+from ES_Engine.core.server_client import ServerClient
+from ES_Engine.core.packet import Packet
 import socket
 
 

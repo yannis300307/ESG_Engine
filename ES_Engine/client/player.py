@@ -1,4 +1,4 @@
-from core.entity import Entity
+from ES_Engine.core.entity import Entity
 import pygame
 
 

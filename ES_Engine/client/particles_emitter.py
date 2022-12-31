@@ -1,6 +1,6 @@
 import random
 
-from client.animation import Anim
+from ES_Engine.client.animation import Anim
 
 
 class ParticlesEmitter:

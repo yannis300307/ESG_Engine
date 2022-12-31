@@ -1,7 +1,7 @@
-from core.network import Network
+from ES_Engine.core.network import Network
 from threading import Thread
-from core.packet import Packet
-from core.received_packet import ReceivedPacket
+from ES_Engine.core.packet import Packet
+from ES_Engine.core.received_packet import ReceivedPacket
 
 import socket
 

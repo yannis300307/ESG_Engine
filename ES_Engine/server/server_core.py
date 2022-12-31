@@ -1,5 +1,5 @@
-from server.server_network import ServerNetwork
-from core.engineCore import Core
+from ES_Engine.server.server_network import ServerNetwork
+from ES_Engine.core.engineCore import Core
 
 
 class Server(Core):
