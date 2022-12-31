@@ -1,4 +1,4 @@
-from client.particles_emitter import ParticlesEmitter
+from ESG_Engine.client.particles_emitter import ParticlesEmitter
 
 
 class ParticlesEmittersManager:

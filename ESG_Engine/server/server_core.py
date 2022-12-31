@@ -1,5 +1,5 @@
-from server.server_network import ServerNetwork
-from core.engineCore import Core
+from ESG_Engine.server.server_network import ServerNetwork
+from ESG_Engine.core.engineCore import Core
 
 
 class Server(Core):

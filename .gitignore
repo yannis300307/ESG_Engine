@@ -1,0 +1,6 @@
+.eggs
+.git
+.idea
+build
+dist
+ES_Engine.egg-info

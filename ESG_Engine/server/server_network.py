@@ -1,11 +1,10 @@
-from core.constants import *
-from core.network import Network
+from ESG_Engine.core.network import Network
 from threading import Thread
 
-from core.network_event import NetworkEvent
-from core.received_packet import ReceivedPacket
-from core.server_client import ServerClient
-from core.packet import Packet
+from ESG_Engine.core.network_event import NetworkEvent
+from ESG_Engine.core.received_packet import ReceivedPacket
+from ESG_Engine.core.server_client import ServerClient
+from ESG_Engine.core.packet import Packet
 import socket
 
 

@@ -1,4 +1,4 @@
-from core.entity import Entity
+from ESG_Engine.core.entity import Entity
 
 
 class EntityManager:

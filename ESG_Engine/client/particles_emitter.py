@@ -1,6 +1,6 @@
 import random
 
-from client.animation import Anim
+from ESG_Engine.client.animation import Anim
 
 
 class ParticlesEmitter:

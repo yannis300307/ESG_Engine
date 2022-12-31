@@ -1,4 +1,4 @@
-from core.server_client import ServerClient
+from ESG_Engine.core.server_client import ServerClient
 
 
 class ReceivedPacket:
