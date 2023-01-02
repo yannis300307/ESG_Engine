@@ -28,7 +28,7 @@ class ServerNetwork(Network):
 		else:
 			raise ConnectionError("Network already initialised !")
 
-	def get_clients(self):
+	def get_clients(self) -> list[ServerClient]:
 		return self._server_clients.copy()
 
 	def server_send_packet_to_client(self, client: ServerClient, packet_name: str, data: list):

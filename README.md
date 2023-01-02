@@ -286,7 +286,7 @@ ba : a byte array
 The letters must be separated by "-".
 
 So if we want a packet that contain a string, an usigned int and a float we must do that like this : `"s-ui-f"`
-The packets shema must be imperatively the sames client side and server side.
+The packets shema must be **imperatively** the sames client side and server side, and you can't send or receive a packet if it is not registered.
 
 ### Init the client side network
 
@@ -328,6 +328,7 @@ class MyClient(Client):
     def __init__(self):
         super().__init__((500, 500))
         self.network.init_client(("localhost", 9999))
+        self.register_packets()
     
     def register_packets(self):
         self.network.register_new_packet("hello", "s-i-i-f-ba")
@@ -350,6 +351,7 @@ class MyClient(Client):
     def __init__(self):
         super().__init__((500, 500))
         self.network.init_client(("localhost", 9999))
+        self.register_packets()
     
     def register_packets(self):
         self.network.register_new_packet("hello", "s")
@@ -360,3 +362,84 @@ class MyClient(Client):
 ```
 
 To close the client's network you just have to call the `client.network.close()` function.
+
+### Create a server and init the server side network
+
+#### Create a server
+The way to create a server and init its network is almost the same way that creating a client.
+
+You can simply create a server by inheriting your class from the `Server` class or, like the client, create a `Client` object.
+
+The network functions are almost the same.
+
+```python
+from ESG_Engine.server.server_core import Server
+
+
+class MyServer(Server):
+    def __init__(self):
+        super().__init__()
+        self.network.init_server(9999)
+        self.register_packets()
+    
+    def register_packets(self):
+        self.network.register_new_packet("hello", "s")
+```
+
+Note that the `network.init_server()` take only the `port` argument and doesn't need an adress.
+
+The packet registering is the same as the client but the packet sending is not. You only can send a packet to the client.
+
+```python
+from ESG_Engine.server.server_core import Server
+
+
+class MyServer(Server):
+    def __init__(self):
+        super().__init__()
+        self.network.init_server(9999)
+        self.register_packets()
+    
+    def register_packets(self):
+        self.network.register_new_packet("hello", "s")
+    
+    def server_loop(self):
+        while True:
+            self.tick()
+            for client in self.network.get_clients():
+                self.network.server_send_packet_to_client(client, "hello", ["Hello client !!"])
+```
+
+As you can see, the `server.network.get_clients()` function return the list of connected clients and `server.network.server_send_packet_to_client(client, packet_name, data)` allows you to send a packet to the client.
+
+#### Network Events
+
+When a client disconnects or connects, you can catch a network event. The `self.network.get_events()` return the list of all the events.
+
+```python
+from ESG_Engine.server.server_core import Server
+from ESG_Engine.core.constants import *
+
+
+class MyServer(Server):
+    def __init__(self):
+        super().__init__()
+        self.network.init_server(9999)
+        self.register_packets()
+    
+    def register_packets(self):
+        self.network.register_new_packet("hello", "s")
+    
+    def server_loop(self):
+        while True:
+            self.tick()
+            for event in self.network.get_events():
+                if event.type == CLIENT_QUIT_EVENT:
+                    print("client", event.client.id, "disconected !")
+```
+
+When a client quit event or a client connection event is created it also contain the `client` key that is a `ServerClient`.
+
+To close the server, just call the `server.close()` function.
+
+If you have some problems you go to my support Discord server : https://discord.gg/acursxkUj8
