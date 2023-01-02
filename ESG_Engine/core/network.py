@@ -1,3 +1,4 @@
+from ESG_Engine.core.constants import NORMAL_LOG
 from ESG_Engine.core.network_event import NetworkEvent
 from ESG_Engine.core.received_packet import ReceivedPacket
 
