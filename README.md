@@ -442,4 +442,4 @@ When a client quit event or a client connection event is created it also contain
 
 To close the server, just call the `server.close()` function.
 
-If you have some problems you go to my support Discord server : https://discord.gg/acursxkUj8
+If you have some problems you can go to my support Discord server : https://discord.gg/acursxkUj8
