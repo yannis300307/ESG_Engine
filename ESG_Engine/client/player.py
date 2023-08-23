@@ -50,7 +50,7 @@ class Player(Entity):
 			self.walking = False
 			if self.colliding[3]:
 				if self.floor_inertia >= 0:
-					if self.speed_x == abs(self.speed_x):
+					if self.speed_x > 0:
 						self.speed_x = max(self.speed_x - self.floor_inertia * delta, 0)
 					else:
 						self.speed_x = min(self.speed_x + self.floor_inertia * delta, 0)
@@ -58,7 +58,7 @@ class Player(Entity):
 					self.speed_x = 0
 			else:
 				if self.void_inertia >= 0:
-					if self.speed_x == abs(self.speed_x):
+					if self.speed_x > 0:
 						self.speed_x = max(self.speed_x - self.void_inertia * delta, 0)
 					else:
 						self.speed_x = min(self.speed_x + self.void_inertia * delta, 0)
