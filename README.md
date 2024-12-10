@@ -2,6 +2,13 @@
 ESG Engine (Extremely Simple Game Engine) is a little Pygame based game engine which allows you to create online (or not) games really quikly and easily.
 You can create a server with very few lines.
 
+## How to install ESG Engine?
+
+Simply by running `pip install ESG-Engine` in your command prompt (with Python and pip both installed).
+You can also clone the repository and install the package yourself.
+
+Next is a simple documentation to learn how to use the lib.
+
 ## How to make a client ?
 
 ### Create a client
