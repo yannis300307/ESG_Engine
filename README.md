@@ -1,12 +1,12 @@
 # ESG Engine
-ESG Engine (Extremely Simple Game Engine) is a little Pygame based game engine which allow you to create online (or not) games really quikly and easily.
+ESG Engine (Extremely Simple Game Engine) is a little Pygame based game engine which allows you to create online (or not) games really quikly and easily.
 You can create a server with very few lines.
 
 ## How to make a client ?
 
 ### Create a client
 
-You can create a client by inherit a class from the core.client.client_core.Client class, or you can simply create a Client object:
+You can create a client by inheriting a class from the core.client.client_core.Client class, or you can simply create a Client object:
 
 Example :
 ```python
@@ -29,7 +29,7 @@ client = Client((500, 500))
 
 ### Game loop
 
-Next, you have to create a game loop which contain the client.tick() function and the client.render() function.
+Next, you have to create a game loop which contains the client.tick() function and the client.render() function.
 
 ```python
 from ESG_Engine.client.client_core import Client
@@ -45,11 +45,11 @@ class MyClient(Client):
             self.render()
 ```
 
-Before starting your game you need to import the map, the bg (optionnal) and the tileset.
+Before running your game, you need to import the map, the background (optionnal) and the tileset.
 
 ### Import a map, backgrounds and tiles
 
-The map json is made of "width" key, a "height" key and a "layers" key which is a list that contains the tiles (0 is nothing)
+The map json is made of a "width" key, a "height" key and a "layers" key which is a list that contains the tiles (0 is nothing)
 
 Example for a 3 x 3 empty map :
 
@@ -65,7 +65,7 @@ Example for a 3 x 3 empty map :
 }
 ```
 
-Note that the first layer is behind the player, the third is in front of the player and the second is used for collisions.
+Note that the first layer is behind the player, the third is in front of the player and the second is used for collisions (So every tiles in this layer will have full square collisions).
 
 You can import the map with the `client.map.load_from_json(json)` function.
 
@@ -102,7 +102,7 @@ class MyClient(Client):
 
 ### Create a player
 
-We can now add a player, and we need to register it:
+We can now add a player, and we have to register it:
 
 ```python
 import pygame
@@ -120,11 +120,11 @@ class MyClient(Client):
         self.event_handler.register_event(pygame.KEYUP, self.player.player_control_key_up)
 ```
 
-Note that the `add_entity()` function return the given entity.
+Note that the `add_entity()` function returns the given entity.
 
-The last 2 lines are for event handler. See the next section for more explanation.
+The last 2 lines are for event handler. See the next section for more explanations.
 
-To add an animation to the player (or Entity), you need a `Anim` object wich contain all the frames of the annimation and bind it to the player into the renderer:
+To add an animation to the player (or to an Entity), you need an `Anim` object wich contains all the frames of the animation and bind it to the player into the renderer:
 
 ```python
 import pygame
@@ -147,7 +147,7 @@ class MyClient(Client):
 
 ## Camera
 
-The camera represent the view of the user. The camera is already created in the client object, but we can move it :
+The camera represents the view of the user. The camera is already created in the client object, but we can move it :
 ```python
 from ESG_Engine.client.client_core import Client
 
@@ -160,8 +160,8 @@ class MyClient(Client):
 ```
 
 A better way to move the camera is to modify `camera.target_x` and `camera.target_y`.
-You can configure how smooth is the camera's moving with `camera.smooth = value`.
-You can also change `camera.zoom` and `camera.lock` (to lock all the camera's movings).
+You can configure how smooth is the camera's movements `camera.smooth = value`.
+You can also change `camera.zoom` and `camera.lock` (to lock the camera's movements).
 
 ```python
 from ESG_Engine.client.client_core import Client
@@ -176,10 +176,10 @@ class MyClient(Client):
 
 ### Event handler
 
-The player object is a simple Entity object the only difference is that the player's controls are already built-in in the player.
+The player object is a simple Entity object. The only difference is that the player's controls are already built-in in the player.
 So we need to add the players controls into the event_handler with `self.event_handler.register_event(pygame.KEYDOWN, self.player.player_control_key_down)` and `self.event_handler.register_event(pygame.KEYUP, self.player.player_control_key_up)`.
 
-You can add all the events you want in the event handler. When the event handler call a registered function, it gives the pygame event object to the registered function. So your function should be like this :
+You can add all the events you want in the event handler. When the event handler calls a registered function, it gives the pygame event object to the registered function. So your function should look like this :
 ```python
 import pygame
 from ESG_Engine.client.client_core import Client
@@ -219,15 +219,15 @@ class MyClient(Client):
             self.render()
             print("FPS :", self.clock.get_fps(), "Delta time :", self.clock.last_delta)
 ```
-Note that the `self.clock.get_delta()` function return the delta time, but it also resets the delta time. This function is already calles if `core.tick()` so prefer to use `core.clock.last_delta`.
+Note that the `self.clock.get_delta()` function returns the delta time, but it also resets the delta time. This function is already called if `core.tick()` is called, so prefer use `core.clock.last_delta`.
 
 ### Particles
 
-You can create and render particles easily using a ParticleEmitter object. This object represent a group of same particles. You can give to it :
+You can create and render particles easily using a ParticleEmitter object. This object represents a group of the same particles. You can give to it :
 - the particle emission area with x, y, width and height
 - the maximum speed of a particle (the speed will be between 0 and your given speed)
 - the maximum lifetime of a single particle (the lifetime will be between 0 and your given lifetime)
-- the texture wich is an animation (the particle annimation will start at a random frame of the animation)
+- the texture wich is an animation (the particle's animation will start at a random frame of the animation)
 
 You can also add some extra speed in the direction you want :
 
@@ -245,13 +245,13 @@ smoke_emitter.extra_up = 100
 smoke_emitter.extra_right = 50
 ```
 
-As you can see, we must register our particle into the `client.particles_emitters_manager` object with the `add_particles_emitter()` function (this function return the given particle emitter).
+As you can see, we must register our particle into the `client.particles_emitters_manager` object with the `add_particles_emitter()` function (this function returns the given particle emitter).
 
-To create particles we need to call the `particle_emitter.create_particles(nbr):` function. The "nbr" argument is the number of particles to create.
+To create particles, we need to call the `particle_emitter.create_particles(nbr)` function. The "nbr" argument is the number of particles to be created.
 
 ### Sound
 
-This Engine allows you to make positionnal sound (The sound volume corresponds to how far you are).
+This Engine allows you to make positionnal sounds (The sound volume corresponds to how far the player is).
 Before playing the sound, you need to register it in the SoundManager object.
 
 ```python
@@ -271,10 +271,10 @@ You can also modify the sound's volume during its playing with the `sound_manage
 
 ## Init the network
 
-To make an online game, you need to init the engine network.
+To make an online game, you need to init the engine's network.
 
 With this engine you can make a server at a very high level.
-To create and register a packet you need to give it a name and a schema. The schema is a string wich represent the datas stored in the packet. It's conposed of letters wich represent a data :
+To create and register a packet you need to give it a name and a schema. The schema is a string wich represents the data stored in the packet. It's composed of letters that represent data types :
 
 s : string
 i : int (positive and negative)
@@ -285,7 +285,7 @@ ba : a byte array
 
 The letters must be separated by "-".
 
-So if we want a packet that contain a string, an usigned int and a float we must do that like this : `"s-ui-f"`
+So if we want a packet that contain a string, an usigned int and a float we will use : `"s-ui-f"`
 The packets shema must be **imperatively** the sames client side and server side, and you can't send or receive a packet if it is not registered.
 
 ### Init the client side network
@@ -339,7 +339,7 @@ class MyClient(Client):
                 print("The server say hello !", packet.data)
 ```
 
-Note that `packet.data` is a list which contain the decoded data.
+Note that `packet.data` is a list that contains the decoded data.
 
 You can send data to the server using the `client_send_packet_to_server()` function like this :
 
@@ -366,9 +366,9 @@ To close the client's network you just have to call the `client.network.close()`
 ### Create a server and init the server side network
 
 #### Create a server
-The way to create a server and init its network is almost the same way that creating a client.
+The way you create a server and init its network is almost the same as creating a client.
 
-You can simply create a server by inheriting your class from the `Server` class or, like the client, create a `Client` object.
+You can simply create a server by inheriting your class from the `Server` class or, such as the client, create a `Client` object.
 
 The network functions are almost the same.
 
@@ -386,9 +386,9 @@ class MyServer(Server):
         self.network.register_new_packet("hello", "s")
 ```
 
-Note that the `network.init_server()` take only the `port` argument and doesn't need an adress.
+Note that the `network.init_server()` only takes the `port` argument and doesn't need an adress.
 
-The packet registering is the same as the client but the packet sending is not. You only can send a packet to the client.
+The packet registering is the same as the client's one but the packet sending is not the same. You can only send a packet to the client.
 
 ```python
 from ESG_Engine.server.server_core import Server
@@ -410,11 +410,11 @@ class MyServer(Server):
                 self.network.server_send_packet_to_client(client, "hello", ["Hello client !!"])
 ```
 
-As you can see, the `server.network.get_clients()` function return the list of connected clients and `server.network.server_send_packet_to_client(client, packet_name, data)` allows you to send a packet to the client.
+As you can see, the `server.network.get_clients()` function returns the list of the connected clients and `server.network.server_send_packet_to_client(client, packet_name, data)` allows you to send a packet to the specified client.
 
 #### Network Events
 
-When a client disconnects or connects, you can catch a network event. The `self.network.get_events()` return the list of all the events.
+When a client disconnects or connects, you can catch a network event. The `self.network.get_events()` returns the list of all the events.
 
 ```python
 from ESG_Engine.server.server_core import Server
@@ -438,8 +438,8 @@ class MyServer(Server):
                     print("client", event.client.id, "disconected !")
 ```
 
-When a client quit event or a client connection event is created it also contain the `client` key that is a `ServerClient`.
+When a client quit event or a client connection event is created, it also contains the `client` key that is a `ServerClient` object.
 
-To close the server, just call the `server.close()` function.
+To close the server, simply call the `server.close()` function.
 
-If you have some problems you can go to my support Discord server : https://discord.gg/acursxkUj8
+If you get any problem, you can go to my support Discord server : https://discord.gg/acursxkUj8
